@@ -150,7 +150,7 @@ if len(airports) > LED_COUNT:
 
 # Retrieve METAR from aviationweather.gov data server
 # Details about parameters can be found here: https://aviationweather.gov/data/api/#/Dataserver/dataserverMetars
-url = "https://aviationweather.gov/cgi-bin/data/dataserver.php?requestType=retrieve&dataSource=metars&stationString=" + ",".join([item for item in airports if item != "NULL"]) + "&hoursBeforeNow=5&format=xml&mostRecent=true&mostRecentForEachStation=constraint"
+url = "https://aviationweather.gov/api/data/metar?ids=" + ",".join([item for item in airports if item != "NULL"]) + "&hoursBeforeNow=5&format=xml&mostRecent=true&mostRecentForEachStation=constraint"
 print(url)
 req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36 Edg/86.0.622.69'})
 content = urllib.request.urlopen(req).read()
@@ -297,3 +297,4 @@ while looplimit > 0:
 
 print()
 print("Done")
+
